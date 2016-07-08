@@ -84,7 +84,7 @@ public class Main {
         };
 
         addEmptySpace();
-        
+
         System.out.println("******************** Lab Work 2-8-4 **********************************");
         Rectangle[] arr2 = {rectangle, new Rectangle("RED", 6, 6), new Rectangle("WHITE", 5, 5), new Rectangle("BLACK", 3, 3),
                 new Rectangle("YELLOW", 20, 20), new Rectangle("RED", 10, 10)};
@@ -92,7 +92,7 @@ public class Main {
         Arrays.sort(arr2);
 
         for (Shape item: arr2) {
-            item.draw();
+            System.out.println(item.toString() + " area is: " + item.calcArea());
         }
 
     }
