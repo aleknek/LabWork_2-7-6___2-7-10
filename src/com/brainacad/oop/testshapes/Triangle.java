@@ -1,6 +1,6 @@
 package com.brainacad.oop.testshapes;
 
-public class Triangle extends Shape {
+public class Triangle extends Shape implements Comparable{
 
     private double a;
     private double b;
@@ -23,5 +23,13 @@ public class Triangle extends Shape {
         this.a = a;
         this.b = b;
         this.c = c;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Triangle triangle = (Triangle)(o);
+        if (this.getArea() > triangle.getArea()) return 1;
+        if (this.getArea() < triangle.getArea()) return -1;
+        return 0;
     }
 }

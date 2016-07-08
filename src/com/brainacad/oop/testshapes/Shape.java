@@ -1,13 +1,11 @@
 package com.brainacad.oop.testshapes;
 
-public class Shape {
+public abstract class Shape implements Drawable {
 
     private String shapeColor;
     double area;
 
-    public double calcArea() {
-        return 0.0;
-    }
+    public abstract double calcArea();
 
     public Shape(String shapeColor) {
         this.shapeColor = shapeColor;
@@ -35,5 +33,10 @@ public class Shape {
 
     public void setArea(double area) {
         this.area = area;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println(this.toString());
     }
 }

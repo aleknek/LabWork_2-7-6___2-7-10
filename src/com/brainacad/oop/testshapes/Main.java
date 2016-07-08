@@ -1,5 +1,7 @@
 package com.brainacad.oop.testshapes;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,10 +11,10 @@ public class Main {
         double sumTriangleArea = 0.0;
         double sumCircleArea = 0.0;
 
-        // Lab Work 2-7-6
-        Shape shape = new Shape("RED");
-        System.out.println(shape.toString());
-        System.out.println("Shape area is " + shape.calcArea());
+//        // Lab Work 2-7-6
+//        Shape shape = new Shape("RED");
+//        System.out.println(shape.toString());
+//        System.out.println("Shape area is " + shape.calcArea());
 
         addEmptySpace();
 
@@ -24,7 +26,7 @@ public class Main {
         addEmptySpace();
 
         // Lab Work 2-7-8
-        Rectangle rectangle = new Rectangle("RED", 11, 22);
+        Rectangle rectangle = new Rectangle("RED", 5, 5);
         System.out.println(rectangle.toString());
         System.out.println("Shape area is: " + rectangle.calcArea());
 
@@ -59,6 +61,40 @@ public class Main {
         System.out.println("Rectangles total area: " + sumRectArea);
         System.out.println("Circle total area: " + sumCircleArea);
         System.out.println("Triangle total area: " + sumTriangleArea);
+
+        addEmptySpace();
+
+        System.out.println("******************** Lab Work 2-8-2 **********************************");
+
+        for (Shape item: arr) {
+            item.draw();
+        }
+
+        addEmptySpace();
+
+        System.out.println("******************** Lab Work 2-8-3 **********************************");
+
+        int resultCompare = rectangle.compareTo(new Rectangle("RED", 15, 25));
+        if (resultCompare == 1){
+            System.out.println("Compare two different rectangle instances - area rectangle № 1 is more than rectangle № 2");
+        } if (resultCompare == -1) {
+            System.out.println("Compare two different rectangle instances - area rectangle № 1 is less than rectangle № 2");
+        } else {
+            System.out.println("Compare two different rectangle instances - areas rectangles equally");
+        };
+
+        addEmptySpace();
+        
+        System.out.println("******************** Lab Work 2-8-4 **********************************");
+        Rectangle[] arr2 = {rectangle, new Rectangle("RED", 6, 6), new Rectangle("WHITE", 5, 5), new Rectangle("BLACK", 3, 3),
+                new Rectangle("YELLOW", 20, 20), new Rectangle("RED", 10, 10)};
+
+        Arrays.sort(arr2);
+
+        for (Shape item: arr2) {
+            item.draw();
+        }
+
     }
 
     public static void addEmptySpace() {

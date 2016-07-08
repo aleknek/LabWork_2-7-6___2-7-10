@@ -1,6 +1,6 @@
 package com.brainacad.oop.testshapes;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Comparable{
 
     private double radius;
 
@@ -26,4 +26,12 @@ public class Circle extends Shape {
     public void setRadius(double radius) {
         this.radius = radius;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        Circle circle = (Circle)(o);
+        if (this.getArea() > circle.getArea()) return 1;
+        if (this.getArea() < circle.getArea()) return -1;
+        return 0;
+       }
 }
