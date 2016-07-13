@@ -66,7 +66,7 @@ public class Main {
 
         System.out.println("******************** Lab Work 2-8-2 **********************************");
 
-        for (Shape item: arr) {
+        for (Shape item : arr) {
             item.draw();
         }
 
@@ -75,14 +75,15 @@ public class Main {
         System.out.println("******************** Lab Work 2-8-3 **********************************");
 
         int resultCompare = rectangle.compareTo(new Rectangle("RED", 15, 25));
-        if (resultCompare == 1){
+        if (resultCompare == 1) {
             System.out.println("Compare two different rectangle instances - area rectangle № 1 is more than rectangle № 2");
-        } if (resultCompare == -1) {
+        }
+        if (resultCompare == -1) {
             System.out.println("Compare two different rectangle instances - area rectangle № 1 is less than rectangle № 2");
         } else {
             System.out.println("Compare two different rectangle instances - areas rectangles equally");
-        };
-
+        }
+        
         addEmptySpace();
 
         System.out.println("******************** Lab Work 2-8-4 **********************************");
@@ -91,8 +92,32 @@ public class Main {
 
         Arrays.sort(arr2);
 
-        for (Shape item: arr2) {
+        for (Shape item : arr2) {
             System.out.println(item.toString() + " area is: " + item.calcArea());
+        }
+
+
+        System.out.println("******************** Lab Work 2-10-3 **********************************");
+
+        Shape rectangle1 = Shape.parseShape("Rectangle:RED:10,20");
+        if (rectangle1 != null) {
+            System.out.println(rectangle1.toString());
+        } else {
+            System.out.println("Invalid string for create rectangle");
+        }
+
+        Shape triangle1 = Shape.parseShape("Triangle:GREEN:9,7,12");
+        if (triangle1 != null) {
+            System.out.println(triangle1.toString());
+        } else {
+            System.out.println("Invalid string for create triangle");
+        }
+
+        Shape circle1 = Shape.parseShape("Circle:BLACK:10");
+        if (circle1 != null) {
+            System.out.println(circle1.toString());
+        } else {
+            System.out.println("Invalid string for create circle");
         }
 
     }
