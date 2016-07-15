@@ -1,6 +1,5 @@
 package com.brainacad.oop.testshapes;
 
-
 public class Rectangle extends Shape implements Comparable {
 
     private double width;
@@ -40,9 +39,14 @@ public class Rectangle extends Shape implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        Rectangle rectangle = (Rectangle)(o);
+        Rectangle rectangle = (Rectangle) (o);
         if (this.calcArea() > rectangle.calcArea()) return 1;
         if (this.calcArea() < rectangle.calcArea()) return -1;
         return 0;
+    }
+
+    public static Rectangle parseRectangle(String str) {
+        String[] numericalParameters = parseNumericalParameters(str);
+        return new Rectangle(parseColor(str), Double.parseDouble(numericalParameters[0]), Double.parseDouble(numericalParameters[1]));
     }
 }

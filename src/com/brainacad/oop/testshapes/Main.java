@@ -1,6 +1,9 @@
 package com.brainacad.oop.testshapes;
 
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -83,7 +86,7 @@ public class Main {
         } else {
             System.out.println("Compare two different rectangle instances - areas rectangles equally");
         }
-        
+
         addEmptySpace();
 
         System.out.println("******************** Lab Work 2-8-4 **********************************");
@@ -91,12 +94,9 @@ public class Main {
                 new Rectangle("YELLOW", 20, 20), new Rectangle("RED", 10, 10)};
 
         Arrays.sort(arr2);
+        Shape.iterateShapeInArray(arr2);
 
-        for (Shape item : arr2) {
-            System.out.println(item.toString() + " area is: " + item.calcArea());
-        }
-
-
+        addEmptySpace();
         System.out.println("******************** Lab Work 2-10-3 **********************************");
 
         Shape rectangle1 = Shape.parseShape("Rectangle:RED:10,20");
@@ -119,6 +119,33 @@ public class Main {
         } else {
             System.out.println("Invalid string for create circle");
         }
+
+        addEmptySpace();
+        System.out.println("******************** Lab Work 2-10-4 **********************************");
+        System.out.println(Shape.parseShapeNew("Rectangle:RED:5,6"));
+        System.out.println(Shape.parseShapeNew("Rectangle:RED:10,20"));
+        System.out.println(Shape.parseShapeNew("Rectangle:RED:33,44"));
+
+        addEmptySpace();
+        System.out.println("******************** Lab Work 2-10-5 **********************************");
+
+        Integer countOfShape = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the count of objects to create: ");
+        if (sc.hasNext()){
+            countOfShape = Integer.parseInt(sc.nextLine());
+        }
+
+        Shape[] arr3 = new Shape[countOfShape];
+
+        for (int i = 0; i < countOfShape; i++){
+            System.out.print("Enter the string for create an object: ");
+            sc.hasNext();
+            arr3[i] = Shape.parseShapeNew(sc.nextLine());
+        }
+        sc.close();
+
+        Shape.iterateShapeInArray(arr3);
 
     }
 

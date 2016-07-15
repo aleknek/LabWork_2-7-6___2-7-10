@@ -34,4 +34,9 @@ public class Circle extends Shape implements Comparable{
         if (this.getArea() < circle.getArea()) return -1;
         return 0;
        }
+
+    public static Circle parseCircle(String str) {
+        String[] numericalParameters = parseNumericalParameters(str);
+        return new Circle(parseColor(str), Double.parseDouble(numericalParameters[0]));
+    }
 }

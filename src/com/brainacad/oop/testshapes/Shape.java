@@ -18,23 +18,38 @@ public abstract class Shape implements Drawable {
         return "Shape, color is " + shapeColor;
     }
 
-    public Shape() {
-    }
-
     public String getShapeColor() {
         return shapeColor;
-    }
-
-    public void setShapeColor(String shapeColor) {
-        this.shapeColor = shapeColor;
     }
 
     public double getArea() {
         return area;
     }
 
-    public void setArea(double area) {
-        this.area = area;
+    public static String parseColor(String str){
+        return  str.substring(0, str.indexOf(":"));
+    }
+
+    public static String[] parseNumericalParameters(String str){
+
+        StringTokenizer stringTokenizer = new StringTokenizer(str.substring(str.lastIndexOf(":") + 1, str.length()), ",");
+
+        String[] numericalParameters = new String[stringTokenizer.countTokens()];
+
+        int counter = 0;
+        while (stringTokenizer.hasMoreElements()) {
+            numericalParameters[counter] = String.valueOf(stringTokenizer.nextElement());
+            counter = counter + 1;
+        }
+
+        return numericalParameters;
+
+    }
+
+    public static void iterateShapeInArray(Shape arr[]){
+        for (Shape item : arr) {
+            System.out.println(item.toString() + " area is: " + item.calcArea());
+        }
     }
 
     @Override
@@ -42,6 +57,7 @@ public abstract class Shape implements Drawable {
         System.out.println(this.toString());
     }
 
+    // Lab Work 2-10-3
     public static Shape parseShape(String str) {
 
         StringTokenizer stringTokenizer1 = new StringTokenizer(str, ":");
@@ -78,5 +94,24 @@ public abstract class Shape implements Drawable {
 
         return null;
 
+    }
+
+    // Lab Work 2-10-4
+    public static Shape parseShapeNew(String str) {
+
+        String typeObject = str.substring(0, str.indexOf(":"));
+        String stringForParse = str.substring(str.indexOf(":")+1, str.length());
+
+        if (typeObject.equals("Rectangle")) {
+            return Rectangle.parseRectangle(stringForParse);
+        }
+        if (typeObject.equals("Triangle")) {
+            return Triangle.parseTriangle(stringForParse);
+        }
+        if (typeObject.equals("Circle")) {
+            return Circle.parseCircle(stringForParse);
+        }
+
+        return null;
     }
 }

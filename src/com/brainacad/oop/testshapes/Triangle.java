@@ -1,6 +1,8 @@
 package com.brainacad.oop.testshapes;
 
-public class Triangle extends Shape implements Comparable{
+import java.util.StringTokenizer;
+
+public class Triangle extends Shape implements Comparable {
 
     private double a;
     private double b;
@@ -27,9 +29,15 @@ public class Triangle extends Shape implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        Triangle triangle = (Triangle)(o);
+        Triangle triangle = (Triangle) (o);
         if (this.getArea() > triangle.getArea()) return 1;
         if (this.getArea() < triangle.getArea()) return -1;
         return 0;
     }
+
+    public static Triangle parseTriangle(String str) {
+        String[] numericalParameters = parseNumericalParameters(str);
+        return new Triangle(parseColor(str), Double.parseDouble(numericalParameters[0]), Double.parseDouble(numericalParameters[1]), Double.parseDouble(numericalParameters[2]));
+    }
+
 }
