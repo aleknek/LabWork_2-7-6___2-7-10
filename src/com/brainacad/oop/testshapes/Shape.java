@@ -41,9 +41,7 @@ public abstract class Shape implements Drawable {
             numericalParameters[counter] = String.valueOf(stringTokenizer.nextElement());
             counter = counter + 1;
         }
-
         return numericalParameters;
-
     }
 
     public static void iterateShapeInArray(Shape arr[]){
