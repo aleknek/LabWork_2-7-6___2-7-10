@@ -35,8 +35,11 @@ public class Triangle extends Shape implements Comparable {
         return 0;
     }
 
-    public static Triangle parseTriangle(String str) {
+    public static Triangle parseTriangle(String str, String entranceString) throws InvalidShapeStringException {
         String[] numericalParameters = parseNumericalParameters(str);
+        if (numericalParameters.length != 3) {
+            throw new InvalidShapeStringException(entranceString);
+        }
         return new Triangle(parseColor(str), Double.parseDouble(numericalParameters[0]), Double.parseDouble(numericalParameters[1]), Double.parseDouble(numericalParameters[2]));
     }
 

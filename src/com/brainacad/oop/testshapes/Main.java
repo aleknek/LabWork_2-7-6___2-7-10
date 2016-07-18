@@ -122,9 +122,21 @@ public class Main {
 
         addEmptySpace();
         System.out.println("******************** Lab Work 2-10-4 **********************************");
-        System.out.println(Shape.parseShapeNew("Rectangle:RED:5,6"));
-        System.out.println(Shape.parseShapeNew("Rectangle:RED:10,20"));
-        System.out.println(Shape.parseShapeNew("Rectangle:RED:33,44"));
+        try {
+            System.out.println(Shape.parseShapeNew("Rectangle:RED:5,6"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
+        try {
+            System.out.println(Shape.parseShapeNew("Rectangle:RED:10,20"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
+        try {
+            System.out.println(Shape.parseShapeNew("Rectangle:RED:33,44"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
 
         addEmptySpace();
         System.out.println("******************** Lab Work 2-10-5 **********************************");
@@ -141,11 +153,33 @@ public class Main {
         for (int i = 0; i < countOfShape; i++){
             System.out.print("Enter the string for create an object: ");
             sc.hasNext();
-            arr3[i] = Shape.parseShapeNew(sc.nextLine());
+            try {
+                arr3[i] = Shape.parseShapeNew(sc.nextLine());
+            } catch (InvalidShapeStringException e) {
+                System.out.println(e.toString());
+            }
         }
         sc.close();
 
         Shape.iterateShapeInArray(arr3);
+
+        addEmptySpace();
+        System.out.println("******************** Lab Work 2-11-4 **********************************");
+        try {
+            System.out.println(Shape.parseShapeNew("RectangleRED:5,6"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
+        try {
+            System.out.println(Shape.parseShapeNew("Triangle:GREEN:9,7"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
+        try {
+            System.out.println(Shape.parseShapeNew("Circle:BLACK:10,20"));
+        } catch (InvalidShapeStringException e) {
+            System.out.println(e.toString());
+        }
 
     }
 

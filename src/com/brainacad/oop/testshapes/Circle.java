@@ -35,8 +35,11 @@ public class Circle extends Shape implements Comparable{
         return 0;
        }
 
-    public static Circle parseCircle(String str) {
+    public static Circle parseCircle(String str, String entranceString) throws InvalidShapeStringException {
         String[] numericalParameters = parseNumericalParameters(str);
+        if (numericalParameters.length != 1) {
+            throw new InvalidShapeStringException(entranceString);
+        }
         return new Circle(parseColor(str), Double.parseDouble(numericalParameters[0]));
     }
 }

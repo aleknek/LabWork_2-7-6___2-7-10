@@ -26,11 +26,11 @@ public abstract class Shape implements Drawable {
         return area;
     }
 
-    public static String parseColor(String str){
-        return  str.substring(0, str.indexOf(":"));
+    public static String parseColor(String str) {
+        return str.substring(0, str.indexOf(":"));
     }
 
-    public static String[] parseNumericalParameters(String str){
+    public static String[] parseNumericalParameters(String str) {
 
         StringTokenizer stringTokenizer = new StringTokenizer(str.substring(str.lastIndexOf(":") + 1, str.length()), ",");
 
@@ -44,9 +44,11 @@ public abstract class Shape implements Drawable {
         return numericalParameters;
     }
 
-    public static void iterateShapeInArray(Shape arr[]){
+    public static void iterateShapeInArray(Shape arr[]) {
         for (Shape item : arr) {
-            System.out.println(item.toString() + " area is: " + item.calcArea());
+            if (item != null) {
+                System.out.println(item.toString() + " area is: " + item.calcArea());
+            }
         }
     }
 
@@ -94,22 +96,19 @@ public abstract class Shape implements Drawable {
 
     }
 
-    // Lab Work 2-10-4
-    public static Shape parseShapeNew(String str) {
+    // Lab Work 2-10-4 and Lab Work 2-11-4
+    public static Shape parseShapeNew(String str) throws InvalidShapeStringException {
 
         String typeObject = str.substring(0, str.indexOf(":"));
-        String stringForParse = str.substring(str.indexOf(":")+1, str.length());
-
+        String stringForParse = str.substring(str.indexOf(":") + 1, str.length());
+        
         if (typeObject.equals("Rectangle")) {
-            return Rectangle.parseRectangle(stringForParse);
-        }
-        if (typeObject.equals("Triangle")) {
-            return Triangle.parseTriangle(stringForParse);
-        }
-        if (typeObject.equals("Circle")) {
-            return Circle.parseCircle(stringForParse);
-        }
+            return Rectangle.parseRectangle(stringForParse, str);
+        } else if (typeObject.equals("Triangle")) {
+            return Triangle.parseTriangle(stringForParse, str);
+        } else if (typeObject.equals("Circle")) {
+            return Circle.parseCircle(stringForParse, str);
+        } else throw new InvalidShapeStringException(str);
 
-        return null;
     }
 }

@@ -45,8 +45,11 @@ public class Rectangle extends Shape implements Comparable {
         return 0;
     }
 
-    public static Rectangle parseRectangle(String str) {
+    public static Rectangle parseRectangle(String str, String entranceString) throws InvalidShapeStringException{
         String[] numericalParameters = parseNumericalParameters(str);
+        if (numericalParameters.length != 2) {
+            throw new InvalidShapeStringException(entranceString);
+        }
         return new Rectangle(parseColor(str), Double.parseDouble(numericalParameters[0]), Double.parseDouble(numericalParameters[1]));
     }
 }
